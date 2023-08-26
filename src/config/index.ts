@@ -22,4 +22,18 @@ export default {
             url: env.DATABASE_URL,
         },
     },
+    jwt: {
+        access: {
+            secret: env.JWT_ACCESS_SECRET,
+            expiresIn: isProduction ? env.ACCESS_TOKEN_EXPIRES_IN : "1d",
+        },
+        refresh: {
+            secret: env.JWT_REFRESH_SECRET,
+            expiresIn: isProduction ? env.REFRESH_TOKEN_EXPIRES_IN : "1y",
+        },
+        passwordReset: {
+            secret: env.JWT_PASSWORD_RESET_SECRET,
+            expiresIn: "1d",
+        },
+    },
 };
