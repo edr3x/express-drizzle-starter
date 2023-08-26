@@ -17,4 +17,9 @@ export default {
         ],
         credentials: true,
     } as CorsOptions,
+    database: {
+        postgres: {
+            url: env.DATABASE_URL,
+        },
+    },
 };

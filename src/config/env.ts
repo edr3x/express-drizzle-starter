@@ -6,6 +6,7 @@ const envSchema = z.object({
     PORT: z.string().optional(),
     NODE_ENV: z.string().optional(),
     CLIENT_BASE_URL: z.string().url(),
+    DATABASE_URL: z.string().startsWith("postgresql://"),
 });
 
 export const env = envSchema.parse(process.env);

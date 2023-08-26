@@ -17,6 +17,20 @@ export async function getUser(
     }
 }
 
+export async function getUserById(
+    req: Request<{ id: string }>,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const response = await UserService.getOneUser(req.params.id);
+
+        return res.status(200).json({ success: true, data: response });
+    } catch (err: any) {
+        next(err);
+    }
+}
+
 export async function createUser(
     req: Request<{}, {}, CreateUserSchema>,
     res: Response,
@@ -26,6 +40,20 @@ export async function createUser(
         const response = await UserService.createUserService(req.body);
 
         return res.status(201).json({ success: true, data: response });
+    } catch (err: any) {
+        next(err);
+    }
+}
+
+export async function deleteUser(
+    req: Request<{ id: string }>,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const response = await UserService.deleteUserService(req.params.id);
+
+        return res.status(200).json({ success: true, data: response });
     } catch (err: any) {
         next(err);
     }

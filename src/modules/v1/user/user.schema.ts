@@ -17,6 +17,11 @@ export const createUserSchema = z.object({
                 invalid_type_error: "Email must be a string",
             })
             .email("Not a valid email"),
+        phone: z
+            .string({
+                required_error: "Phone is required",
+            })
+            .min(10, "Phone number must be at least 10 digits long"),
         password: z.string().regex(passwordRegex, regxMessage),
     }),
 });

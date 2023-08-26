@@ -1,19 +1,25 @@
 {
-    "name": "typescript-starter",
+    "name": "drizzle-starter",
     "version": "1.0.0",
-    "main": "dist/index.js",
+    "main": "dist/main.js",
     "license": "",
     "scripts": {
         "build": "tsc && tsc-alias",
         "start": "node dist/main.js",
         "dev": "ts-node-dev -r tsconfig-paths/register ./src/main.ts",
-        "format": "prettier --write \"src/**/*.ts\""
+        "format": "prettier --write \"src/**/*.ts\"",
+        "generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
+        "introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
+        "migrate": "ts-node src/db/migrate.ts"
     },
     "dependencies": {
+        "@paralleldrive/cuid2": "^2.2.2",
         "argon2": "^0.31.0",
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",
+        "drizzle-orm": "^0.28.5",
         "express": "^4.18.2",
+        "postgres": "^3.3.5",
         "winston": "^3.10.0",
         "zod": "^3.22.2"
     },
@@ -21,6 +27,7 @@
         "@types/cors": "^2.8.13",
         "@types/express": "^4.17.17",
         "@types/node": "^18.17.11",
+        "drizzle-kit": "^0.19.13",
         "prettier": "^2.8.8",
         "ts-node": "^10.9.1",
         "ts-node-dev": "^2.0.0",
