@@ -53,6 +53,4 @@ function verify({ token, tokenType }: VerifyOptions): string | jwt.JwtPayload {
 export default {
     verify,
     generate,
-    err: jwt.JsonWebTokenError,
-    expired: jwt.TokenExpiredError,
 };

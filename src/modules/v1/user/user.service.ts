@@ -6,6 +6,12 @@ import { CreateUserSchema } from "./user.schema";
 import { CustomError } from "@/utils/custom_error";
 import { InsertUser, users } from "@/db/schema/users";
 
+export async function getMe(id: string) {
+    const user = await db.select().from(users).where(eq(users.id, id));
+
+    return user[0];
+}
+
 export async function getUserService() {
     return await db
         .select({
@@ -18,7 +24,7 @@ export async function getUserService() {
         .from(users);
 }
 
-export async function getOneUser(id: string) {
+export async function getUserById(id: string) {
     const userData = await db
         .select({
             id: users.id,
