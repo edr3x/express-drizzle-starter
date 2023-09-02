@@ -5,9 +5,8 @@ const isProduction = env.NODE_ENV === "prod";
 
 export default {
     app: {
-        env: env.NODE_ENV,
-        isProduction: isProduction,
-        port: env.PORT,
+        isProduction,
+        port: env.PORT || 8080,
     },
     cors: {
         origin: [
@@ -36,4 +35,4 @@ export default {
             expiresIn: "1d",
         },
     },
-};
+} as const;
